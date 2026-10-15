@@ -19,8 +19,8 @@ runs:
       shell: bash
       run: sudo ethtool -K eth0 tx off rx off
     - name: Install pnpm
-      uses: pnpm/action-setup@v4
-    - uses: actions/setup-node@v5
+      uses: pnpm/action-setup@v4.4.0
+    - uses: actions/setup-node@v5.0.0
       with:
         node-version: ${{ inputs.node-version }}
         cache: pnpm
@@ -30,7 +30,7 @@ runs:
       run: pnpm install --frozen-lockfile
     - name: Cache turbo
       if: inputs.cache-key != 'false'
-      uses: actions/cache@v4
+      uses: actions/cache@v4.3.0
       with:
         path: ./.turbo/cache
         key: turbo2-cache-${{ runner.os }}-${{ inputs.cache-key }}-${{ github.sha }}
